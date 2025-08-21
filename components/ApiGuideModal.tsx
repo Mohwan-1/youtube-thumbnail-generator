@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { X, ExternalLink, CheckCircle, AlertCircle } from 'lucide-react'
 
 interface ApiGuideModalProps {
@@ -8,6 +8,26 @@ interface ApiGuideModalProps {
 
 export default function ApiGuideModal({ isOpen, onClose }: ApiGuideModalProps) {
   const [currentStep, setCurrentStep] = useState(0)
+
+  // ESC 키로 팝업 닫기
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose()
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscapeKey)
+      // 스크롤 방지
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey)
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen, onClose])
 
   if (!isOpen) return null
 
@@ -139,17 +159,32 @@ export default function ApiGuideModal({ isOpen, onClose }: ApiGuideModalProps) {
     }
   ]
 
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose()
+    }
+  }
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div 
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+      onClick={handleBackdropClick}
+    >
       <div className="bg-dark-light rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-600">
-          <h2 className="text-2xl font-bold text-white">
-            🔑 구글 AI API 키 발급 가이드
-          </h2>
+          <div>
+            <h2 className="text-2xl font-bold text-white">
+              🔑 구글 AI API 키 발급 가이드
+            </h2>
+            <p className="text-sm text-gray-400 mt-1">
+              ESC 키 또는 배경 클릭으로 닫을 수 있어요
+            </p>
+          </div>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-white transition-colors"
+            title="닫기 (ESC)"
           >
             <X size={24} />
           </button>
