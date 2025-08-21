@@ -67,7 +67,7 @@ export default function ApiGuideModal({ isOpen, onClose }: ApiGuideModalProps) {
             </p>
           </div>
           <p className="text-gray-300">
-            <strong>"Get API key"</strong> 또는 <strong>"API 키 만들기"</strong> 버튼을 누르세요.<br/>
+            <strong>&quot;Get API key&quot;</strong> 또는 <strong>&quot;API 키 만들기&quot;</strong> 버튼을 누르세요.<br/>
             보통 왼쪽 메뉴나 상단에 있어요.
           </p>
           <div className="bg-blue-900/30 p-3 rounded-lg">
@@ -100,8 +100,8 @@ export default function ApiGuideModal({ isOpen, onClose }: ApiGuideModalProps) {
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            <strong>"Create API key"</strong> 또는<br/>
-            <strong>"Create API key in new project"</strong> 버튼을 클릭하세요.
+            <strong>&quot;Create API key&quot;</strong> 또는<br/>
+            <strong>&quot;Create API key in new project&quot;</strong> 버튼을 클릭하세요.
           </p>
           <div className="bg-green-900/30 p-3 rounded-lg">
             <p className="text-green-300 text-sm">
