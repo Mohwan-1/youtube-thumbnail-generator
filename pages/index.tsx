@@ -113,14 +113,18 @@ export default function Home() {
           {/* Hero Section */}
           <section className="container mx-auto px-4 py-12 text-center">
             <div className="max-w-3xl mx-auto">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <Youtube className="text-red-500" size={48} />
-                <Sparkles className="text-yellow-400" size={32} />
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <Youtube className="text-red-500" size={72} />
+                <Sparkles className="text-yellow-400" size={56} />
               </div>
               
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                AI가 만드는 완벽한 썸네일
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                썸네일 자동 생성기
               </h2>
+              
+              <p className="text-lg md:text-xl text-gray-300 mb-2 font-medium">
+                AI가 만드는 완벽한 썸네일
+              </p>
               
               <p className="text-xl text-gray-300 mb-8">
                 영상 제목과 키워드만 입력하면 <br />
