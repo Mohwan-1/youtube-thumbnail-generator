@@ -9,6 +9,9 @@ interface ThumbnailData {
   background: string
   textColor: string
   accentColor: string
+  visualElements?: string
+  emotion?: string
+  clickBait?: string
 }
 
 interface ThumbnailGeneratorProps {
@@ -187,6 +190,28 @@ export default function ThumbnailGenerator({ apiKey }: ThumbnailGeneratorProps) 
                     <div className="bg-primary text-white px-4 py-2 rounded-full font-bold">
                       선택됨 ✓
                     </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 썸네일 정보 표시 */}
+              <div className="space-y-3 mb-4">
+                {thumbnail.emotion && (
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className="text-blue-400">😊 감정:</span>
+                    <span className="text-gray-300">{thumbnail.emotion}</span>
+                  </div>
+                )}
+                {thumbnail.visualElements && (
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className="text-green-400">🎨 디자인:</span>
+                    <span className="text-gray-300">{thumbnail.visualElements}</span>
+                  </div>
+                )}
+                {thumbnail.clickBait && (
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className="text-yellow-400">🎯 전략:</span>
+                    <span className="text-gray-300">{thumbnail.clickBait}</span>
                   </div>
                 )}
               </div>
