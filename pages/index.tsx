@@ -80,13 +80,13 @@ export default function Home() {
                   <Image
                     src="/logo.png"
                     alt="Logo"
-                    width={80}
-                    height={80}
+                    width={100}
+                    height={100}
                     className="rounded-lg"
                   />
                   <div>
-                    <h1 className="text-3xl md:text-4xl font-bold text-white">썸네일 자동 생성기</h1>
-                    <p className="text-gray-400 text-base md:text-lg">AI로 만드는 유튜브 썸네일</p>
+                    <h1 className="text-2xl md:text-3xl font-bold text-white">썸네일 자동 생성기</h1>
+                    <p className="text-gray-400 text-sm md:text-base">AI로 만드는 유튜브 썸네일</p>
                   </div>
                 </div>
                 
