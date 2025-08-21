@@ -38,15 +38,15 @@ export default function ApiGuideModal({ isOpen, onClose }: ApiGuideModalProps) {
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            📱 구글 계정으로 로그인해야 해요.<br/>
-            <strong>지메일 계정 있으면 바로 가능!</strong>
+            구글 계정으로 로그인해야 해요.<br/>
+            <strong>(지메일 계정 있으면 바로 가능!)</strong>
           </p>
           <button
             onClick={() => window.open('https://aistudio.google.com/', '_blank')}
             className="btn-primary w-full flex items-center justify-center gap-2"
           >
             <ExternalLink size={20} />
-            Google AI Studio 열기
+            Google AI Studio 접속하기
           </button>
           <div className="bg-blue-900/30 p-3 rounded-lg">
             <p className="text-blue-300 text-sm">
@@ -58,21 +58,15 @@ export default function ApiGuideModal({ isOpen, onClose }: ApiGuideModalProps) {
     },
     {
       title: "2️⃣ API 키 발급 메뉴 찾기",
-      description: "로그인 후, \"Get API key\" 버튼을 찾아요",
+      description: "화면에서 \"Get API key\" 또는 \"API 키 만들기\" 버튼을 눌러요",
       content: (
         <div className="space-y-4">
+          <p className="text-gray-300">
+            로그인 후, 화면에서 <strong>&quot;Get API key&quot;</strong> 또는 <strong>&quot;API 키 만들기&quot;</strong> 버튼을 눌러요.
+          </p>
           <div className="bg-yellow-900/30 p-3 rounded-lg">
             <p className="text-yellow-300 text-sm">
-              🎯 <strong>찾는 곳:</strong> 왼쪽 메뉴나 상단에 있어요
-            </p>
-          </div>
-          <p className="text-gray-300">
-            <strong>&quot;Get API key&quot;</strong> 또는 <strong>&quot;API 키 만들기&quot;</strong> 버튼을 누르세요.<br/>
-            보통 왼쪽 메뉴나 상단에 있어요.
-          </p>
-          <div className="bg-blue-900/30 p-3 rounded-lg">
-            <p className="text-blue-300 text-sm">
-              💡 메뉴가 안 보이면 햄버거 버튼(≡)을 눌러보세요!
+              🎯 <strong>위치:</strong> 보통 왼쪽 메뉴나 상단에 있어요
             </p>
           </div>
         </div>
@@ -96,16 +90,19 @@ export default function ApiGuideModal({ isOpen, onClose }: ApiGuideModalProps) {
     },
     {
       title: "4️⃣ 새 프로젝트에 API 키 생성",
-      description: "구글이 자동으로 새로운 API 키를 만들어줘요",
+      description: "구글이 자동으로 새로운 API 키를 발급해 줍니다",
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
             <strong>&quot;Create API key&quot;</strong> 또는<br/>
             <strong>&quot;Create API key in new project&quot;</strong> 버튼을 클릭하세요.
           </p>
+          <p className="text-gray-300">
+            그러면 구글이 자동으로 새로운 API 키를 발급해 줍니다.
+          </p>
           <div className="bg-green-900/30 p-3 rounded-lg">
             <p className="text-green-300 text-sm">
-              ✅ <strong>무료 사용량:</strong> 매월 1,500번까지 무료로 사용 가능!
+              ✅ <strong>무료 사용량:</strong> 매월 많은 요청을 무료로 사용할 수 있어요!
             </p>
           </div>
         </div>
@@ -113,17 +110,20 @@ export default function ApiGuideModal({ isOpen, onClose }: ApiGuideModalProps) {
     },
     {
       title: "5️⃣ 키 복사 & 안전 보관",
-      description: "화면에 나오는 긴 문자열이 바로 API 키예요",
+      description: "화면에 긴 문자열이 나오는데, 이게 바로 API 키예요",
       content: (
         <div className="space-y-4">
+          <p className="text-gray-300">
+            화면에 긴 문자열(영문+숫자 조합)이 나오는데, 이게 바로 API 키예요.
+          </p>
           <div className="bg-green-900/30 p-4 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <CheckCircle className="text-green-400" size={20} />
               <strong className="text-green-300">마지막 단계!</strong>
             </div>
             <ol className="list-decimal list-inside space-y-2 text-green-200">
-              <li>화면에 나오는 긴 문자열(영문+숫자 조합)이 API 키예요</li>
               <li><strong>Copy(복사)</strong> 버튼을 눌러서 복사하세요</li>
+              <li>메모장이나 안전한 곳에 저장하세요</li>
               <li>이 페이지로 돌아와서 API 키를 입력하고 저장하세요</li>
             </ol>
           </div>
@@ -133,8 +133,7 @@ export default function ApiGuideModal({ isOpen, onClose }: ApiGuideModalProps) {
               <strong className="text-red-300 text-sm">중요!</strong>
             </div>
             <p className="text-red-200 text-sm">
-              <strong>중요한 비밀번호랑 비슷하니까 절대 남에게 알려주면 안 돼요!</strong><br/>
-              SNS나 카페 등에 올리면 절대 안됩니다.
+              <strong>중요한 비밀번호랑 비슷하니까 절대 남에게 알려주면 안 돼요.</strong>
             </p>
           </div>
         </div>
