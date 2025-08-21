@@ -63,17 +63,17 @@ export default function Home() {
           <header className="border-b border-gray-700">
             <div className="container mx-auto px-4 py-6">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-6">
                   <Image
                     src="/logo.png"
                     alt="Logo"
-                    width={48}
-                    height={48}
+                    width={80}
+                    height={80}
                     className="rounded-lg"
                   />
                   <div>
-                    <h1 className="text-2xl font-bold text-white">썸네일 자동 생성기</h1>
-                    <p className="text-gray-400 text-sm">AI로 만드는 유튜브 썸네일</p>
+                    <h1 className="text-3xl md:text-4xl font-bold text-white">썸네일 자동 생성기</h1>
+                    <p className="text-gray-400 text-base md:text-lg">AI로 만드는 유튜브 썸네일</p>
                   </div>
                 </div>
                 
