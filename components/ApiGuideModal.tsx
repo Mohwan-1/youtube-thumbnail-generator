@@ -33,13 +33,13 @@ export default function ApiGuideModal({ isOpen, onClose }: ApiGuideModalProps) {
 
   const steps = [
     {
-      title: "1단계: Google AI Studio 접속하기",
-      description: "구글 계정으로 로그인해주세요",
+      title: "1️⃣ Google AI Studio 접속하기",
+      description: "먼저 Google AI Studio에 들어가세요",
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            📱 <strong>구글 계정이 필요해요!</strong><br/>
-            Gmail이나 YouTube 계정이 있으면 됩니다.
+            📱 구글 계정으로 로그인해야 해요.<br/>
+            <strong>지메일 계정 있으면 바로 가능!</strong>
           </p>
           <button
             onClick={() => window.open('https://aistudio.google.com/', '_blank')}
@@ -50,104 +50,91 @@ export default function ApiGuideModal({ isOpen, onClose }: ApiGuideModalProps) {
           </button>
           <div className="bg-blue-900/30 p-3 rounded-lg">
             <p className="text-blue-300 text-sm">
-              💡 <strong>팁:</strong> 새 탭에서 열리니까 이 가이드를 계속 보면서 따라하세요!
+              💡 <strong>팁:</strong> 새 탭에서 열리니까 이 가이드를 보면서 따라하세요!
             </p>
           </div>
         </div>
       )
     },
     {
-      title: "2단계: 약관 동의하기",
-      description: "Google AI 서비스 이용 약관에 동의해요",
+      title: "2️⃣ API 키 발급 메뉴 찾기",
+      description: "로그인 후, \"Get API key\" 버튼을 찾아요",
       content: (
         <div className="space-y-4">
           <div className="bg-yellow-900/30 p-3 rounded-lg">
             <p className="text-yellow-300 text-sm">
-              🎯 <strong>처음 방문하신다면:</strong> 약관 동의 화면이 나타날 거예요
+              🎯 <strong>찾는 곳:</strong> 왼쪽 메뉴나 상단에 있어요
             </p>
           </div>
-          <ol className="list-decimal list-inside space-y-2 text-gray-300">
-            <li>Google AI Studio에 처음 접속</li>
-            <li>서비스 약관 및 개인정보처리방침 확인</li>
-            <li>동의 체크박스 클릭</li>
-            <li>계속하기 또는 Continue 버튼 클릭</li>
-          </ol>
-          <div className="bg-green-900/30 p-3 rounded-lg">
-            <p className="text-green-300 text-sm">
-              ✅ 동의하면 AI Studio 메인 화면으로 이동합니다!
-            </p>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "3단계: API 키 생성 메뉴 찾기",
-      description: "왼쪽 메뉴에서 API key를 찾아요",
-      content: (
-        <div className="space-y-4">
+          <p className="text-gray-300">
+            <strong>"Get API key"</strong> 또는 <strong>"API 키 만들기"</strong> 버튼을 누르세요.<br/>
+            보통 왼쪽 메뉴나 상단에 있어요.
+          </p>
           <div className="bg-blue-900/30 p-3 rounded-lg">
             <p className="text-blue-300 text-sm">
-              🔍 <strong>찾는 방법:</strong> 화면 왼쪽에 메뉴가 있어요
-            </p>
-          </div>
-          <ol className="list-decimal list-inside space-y-2 text-gray-300">
-            <li>Google AI Studio 메인 화면 확인</li>
-            <li>왼쪽 사이드바 메뉴에서 <strong>🔑 Get API key</strong> 클릭</li>
-            <li>또는 <strong>API keys</strong> 메뉴 클릭</li>
-          </ol>
-          <div className="bg-yellow-900/30 p-3 rounded-lg">
-            <p className="text-yellow-300 text-sm">
-              💡 <strong>참고:</strong> 메뉴가 접혀있다면 햄버거 버튼(≡)을 클릭해서 열어주세요!
+              💡 메뉴가 안 보이면 햄버거 버튼(≡)을 눌러보세요!
             </p>
           </div>
         </div>
       )
     },
     {
-      title: "4단계: API 키 생성하기",
-      description: "새로운 API 키를 만들어요",
+      title: "3️⃣ 약관 동의하기",
+      description: "API를 사용하려면 규칙(약관)에 동의해야 해요",
       content: (
         <div className="space-y-4">
-          <ol className="list-decimal list-inside space-y-2 text-gray-300">
-            <li><strong>Create API key</strong> 또는 <strong>API 키 만들기</strong> 버튼 클릭</li>
-            <li>Google Cloud 프로젝트 선택 (기본 프로젝트 선택 가능)</li>
-            <li>만약 프로젝트가 없다면 <strong>Create API key in new project</strong> 선택</li>
-            <li>API 키가 생성됩니다!</li>
-          </ol>
+          <p className="text-gray-300">
+            체크박스를 선택하고 <strong>Continue(계속)</strong> 버튼을 누르면 돼요.
+          </p>
           <div className="bg-green-900/30 p-3 rounded-lg">
             <p className="text-green-300 text-sm">
-              ✅ <strong>무료 사용량:</strong> 매월 무료로 많은 요청을 할 수 있어요!<br/>
-              (월 1,500 요청까지 무료)
+              ✅ <strong>간단해요:</strong> 체크 → Continue 버튼만 누르면 끝!
             </p>
           </div>
         </div>
       )
     },
     {
-      title: "5단계: API 키 복사하고 사용하기",
-      description: "생성된 API 키를 썸네일 생성기에 입력해요",
+      title: "4️⃣ 새 프로젝트에 API 키 생성",
+      description: "구글이 자동으로 새로운 API 키를 만들어줘요",
+      content: (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            <strong>"Create API key"</strong> 또는<br/>
+            <strong>"Create API key in new project"</strong> 버튼을 클릭하세요.
+          </p>
+          <div className="bg-green-900/30 p-3 rounded-lg">
+            <p className="text-green-300 text-sm">
+              ✅ <strong>무료 사용량:</strong> 매월 1,500번까지 무료로 사용 가능!
+            </p>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: "5️⃣ 키 복사 & 안전 보관",
+      description: "화면에 나오는 긴 문자열이 바로 API 키예요",
       content: (
         <div className="space-y-4">
           <div className="bg-green-900/30 p-4 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <CheckCircle className="text-green-400" size={20} />
-              <strong className="text-green-300">완료!</strong>
+              <strong className="text-green-300">마지막 단계!</strong>
             </div>
             <ol className="list-decimal list-inside space-y-2 text-green-200">
-              <li>생성된 API 키 옆의 <strong>복사</strong> 버튼 클릭</li>
-              <li>이 썸네일 생성기 페이지로 돌아와서</li>
-              <li><strong>API 키 저장</strong> 버튼을 눌러서</li>
-              <li>복사한 키를 붙여넣고 저장하세요</li>
+              <li>화면에 나오는 긴 문자열(영문+숫자 조합)이 API 키예요</li>
+              <li><strong>Copy(복사)</strong> 버튼을 눌러서 복사하세요</li>
+              <li>이 페이지로 돌아와서 API 키를 입력하고 저장하세요</li>
             </ol>
           </div>
           <div className="bg-red-900/30 p-3 rounded-lg">
             <div className="flex items-center gap-2 mb-1">
               <AlertCircle className="text-red-400" size={16} />
-              <strong className="text-red-300 text-sm">보안 주의!</strong>
+              <strong className="text-red-300 text-sm">중요!</strong>
             </div>
             <p className="text-red-200 text-sm">
-              API 키는 절대 다른 사람과 공유하지 마세요!<br/>
-              GitHub, SNS 등에 올리면 안됩니다.
+              <strong>중요한 비밀번호랑 비슷하니까 절대 남에게 알려주면 안 돼요!</strong><br/>
+              SNS나 카페 등에 올리면 절대 안됩니다.
             </p>
           </div>
         </div>
