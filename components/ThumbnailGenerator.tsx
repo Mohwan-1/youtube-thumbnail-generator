@@ -195,23 +195,23 @@ export default function ThumbnailGenerator({ apiKey }: ThumbnailGeneratorProps) 
               </div>
 
               {/* 썸네일 정보 표시 */}
-              <div className="space-y-3 mb-4">
+              <div className="space-y-2 mb-4">
                 {thumbnail.emotion && (
-                  <div className="flex items-center gap-2 text-sm">
-                    <span className="text-blue-400">😊 감정:</span>
-                    <span className="text-gray-300">{thumbnail.emotion}</span>
+                  <div className="flex items-start gap-2 text-sm">
+                    <span className="text-blue-400 font-medium min-w-[60px]">😊 감정:</span>
+                    <span className="text-gray-300 flex-1 leading-relaxed">{thumbnail.emotion}</span>
                   </div>
                 )}
                 {thumbnail.visualElements && (
-                  <div className="flex items-center gap-2 text-sm">
-                    <span className="text-green-400">🎨 디자인:</span>
-                    <span className="text-gray-300">{thumbnail.visualElements}</span>
+                  <div className="flex items-start gap-2 text-sm">
+                    <span className="text-green-400 font-medium min-w-[60px]">🎨 디자인:</span>
+                    <span className="text-gray-300 flex-1 leading-relaxed">{thumbnail.visualElements}</span>
                   </div>
                 )}
                 {thumbnail.clickBait && (
-                  <div className="flex items-center gap-2 text-sm">
-                    <span className="text-yellow-400">🎯 전략:</span>
-                    <span className="text-gray-300">{thumbnail.clickBait}</span>
+                  <div className="flex items-start gap-2 text-sm">
+                    <span className="text-yellow-400 font-medium min-w-[60px]">🎯 전략:</span>
+                    <span className="text-gray-300 flex-1 leading-relaxed">{thumbnail.clickBait}</span>
                   </div>
                 )}
               </div>
