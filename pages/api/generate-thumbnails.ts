@@ -20,60 +20,68 @@ export default async function handler(
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" })
 
     const prompt = `
-유튜브 썸네일을 위한 텍스트 디자인을 5개 생성해주세요.
+당신은 유튜브 썸네일 전문 디자이너입니다. 주어진 영상 제목과 키워드를 바탕으로 고품질의 썸네일 텍스트 디자인을 생성해주세요.
 
 영상 제목: "${title}"
 키워드: "${keywords}"
 
-반드시 다음 JSON 형식으로만 응답해주세요 (다른 텍스트 없이):
+유튜브 썸네일 업계 트렌드를 반영하여 다음과 같이 5개의 다양한 스타일로 생성해주세요:
+
+1. 충격적/자극적 스타일 (빨간색 계열, 굵은 텍스트)
+2. 트렌디/모던 스타일 (그라데이션, 네온 컬러)
+3. 미니멀/깔끔 스타일 (단순한 색상, 여백 활용)
+4. 화려/눈에 띄는 스타일 (밝은 색상, 대비 강함)
+5. 프리미엄/고급 스타일 (어두운 배경, 골드/실버 악센트)
+
+반드시 다음 JSON 형식으로만 응답해주세요:
 {
   "thumbnails": [
     {
-      "title": "짧고 임팩트 있는 제목",
-      "subtitle": "부제목",
-      "background": "#색상코드",
-      "textColor": "#색상코드",
-      "accentColor": "#색상코드"
+      "title": "충격! 이것만 알면",
+      "subtitle": "99% 몰랐던 비밀",
+      "background": "#ff1744",
+      "textColor": "#ffffff",
+      "accentColor": "#ffff00"
     },
     {
-      "title": "다른 제목",
-      "subtitle": "다른 부제목",
-      "background": "#색상코드",
-      "textColor": "#색상코드",
-      "accentColor": "#색상코드"
+      "title": "지금 핫한",
+      "subtitle": "놓치면 후회할",
+      "background": "linear-gradient(45deg, #667eea 0%, #764ba2 100%)",
+      "textColor": "#ffffff",
+      "accentColor": "#00ff88"
     },
     {
-      "title": "세번째 제목",
-      "subtitle": "세번째 부제목",
-      "background": "#색상코드",
-      "textColor": "#색상코드",
-      "accentColor": "#색상코드"
+      "title": "완벽 정리",
+      "subtitle": "한번에 끝내기",
+      "background": "#f8f9fa",
+      "textColor": "#212529",
+      "accentColor": "#007bff"
     },
     {
-      "title": "네번째 제목",
-      "subtitle": "네번째 부제목",
-      "background": "#색상코드",
-      "textColor": "#색상코드",
-      "accentColor": "#색상코드"
+      "title": "대박! 실화냐",
+      "subtitle": "믿을 수 없는",
+      "background": "#ffc107",
+      "textColor": "#000000",
+      "accentColor": "#dc3545"
     },
     {
-      "title": "다섯번째 제목",
-      "subtitle": "다섯번째 부제목",
-      "background": "#색상코드",
-      "textColor": "#색상코드",
-      "accentColor": "#색상코드"
+      "title": "프로가 알려주는",
+      "subtitle": "고급 노하우",
+      "background": "#1a1a1a",
+      "textColor": "#ffffff",
+      "accentColor": "#ffd700"
     }
   ]
 }
 
-요구사항:
-- 제목은 10글자 이내로 짧고 임팩트 있게
-- 배경색은 어둡거나 밝은 톤으로 다양하게
-- 텍스트 색상은 배경과 대비되어 잘 보이게
-- 유튜브 썸네일 특성상 자극적이고 클릭하고 싶게 만들어주세요
-- 각 썸네일은 서로 다른 스타일과 색상을 가져야 합니다
-- JSON 형식만 응답하고 다른 설명은 포함하지 마세요
-`
+핵심 요구사항:
+- 제목: 6-12글자, 클릭을 유도하는 강력한 문구
+- 부제목: 호기심을 자극하는 보조 문구
+- 색상: 유튜브에서 시선을 끄는 고대비 조합
+- 각 썸네일은 완전히 다른 분위기와 타겟
+- 실제 유튜브 크리에이터들이 사용하는 검증된 패턴 활용
+
+JSON만 응답하세요:`
 
     const result = await model.generateContent(prompt)
     const response = await result.response
@@ -94,29 +102,44 @@ export default async function handler(
       console.error('JSON Parse Error:', parseError)
       console.error('Response text:', text)
       
-      // 백업 썸네일 데이터 제공
+      // 백업 썸네일 데이터 제공 (더 매력적인 버전)
+      const shortTitle = title.length > 8 ? title.substring(0, 8) + '..' : title
       thumbnailData = {
         thumbnails: [
           {
-            title: title.substring(0, 10),
-            subtitle: keywords,
+            title: `충격! ${shortTitle}`,
+            subtitle: "99% 몰랐던 사실",
+            background: "#ff1744",
+            textColor: "#ffffff",
+            accentColor: "#ffff00"
+          },
+          {
+            title: "대박 실화냐",
+            subtitle: "믿을 수 없는",
+            background: "linear-gradient(45deg, #667eea 0%, #764ba2 100%)",
+            textColor: "#ffffff",
+            accentColor: "#00ff88"
+          },
+          {
+            title: "지금 핫한",
+            subtitle: keywords.split(',')[0] || "트렌드",
+            background: "#ffc107",
+            textColor: "#000000",
+            accentColor: "#dc3545"
+          },
+          {
+            title: "완벽 정리",
+            subtitle: "한번에 끝내기",
+            background: "#f8f9fa",
+            textColor: "#212529",
+            accentColor: "#007bff"
+          },
+          {
+            title: "프로 비밀",
+            subtitle: "고급 노하우",
             background: "#1a1a1a",
             textColor: "#ffffff",
-            accentColor: "#ff6b6b"
-          },
-          {
-            title: "클릭 유도",
-            subtitle: "지금 시청",
-            background: "#2d2d2d",
-            textColor: "#ffffff",
-            accentColor: "#4ecdc4"
-          },
-          {
-            title: "놓치면 후회",
-            subtitle: "필수 시청",
-            background: "#ff6b6b",
-            textColor: "#ffffff",
-            accentColor: "#ffffff"
+            accentColor: "#ffd700"
           }
         ]
       }

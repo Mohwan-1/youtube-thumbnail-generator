@@ -136,28 +136,58 @@ export default function ThumbnailGenerator({ apiKey }: ThumbnailGeneratorProps) 
                 ref={(el) => {
                   thumbnailRefs.current[thumbnail.id] = el
                 }}
-                className="relative aspect-video rounded-lg overflow-hidden mb-4 cursor-pointer"
-                style={{ backgroundColor: thumbnail.background }}
+                className="relative aspect-video rounded-lg overflow-hidden mb-4 cursor-pointer transition-transform hover:scale-105"
+                style={{ 
+                  background: thumbnail.background.includes('gradient') 
+                    ? thumbnail.background 
+                    : thumbnail.background,
+                  boxShadow: selectedThumbnail === thumbnail.id 
+                    ? '0 0 20px rgba(255, 107, 107, 0.5)' 
+                    : '0 4px 12px rgba(0, 0, 0, 0.3)'
+                }}
                 onClick={() => setSelectedThumbnail(thumbnail.id)}
               >
-                <div className="absolute inset-0 flex flex-col justify-center items-center p-6 text-center">
+                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center">
                   <h3
-                    className="text-2xl md:text-3xl font-bold mb-2"
-                    style={{ color: thumbnail.textColor }}
+                    className="text-2xl md:text-4xl font-black mb-2 leading-tight"
+                    style={{ 
+                      color: thumbnail.textColor,
+                      textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
+                      fontFamily: 'system-ui, -apple-system, sans-serif'
+                    }}
                   >
                     {thumbnail.title}
                   </h3>
                   {thumbnail.subtitle && (
                     <p
-                      className="text-lg"
-                      style={{ color: thumbnail.accentColor }}
+                      className="text-sm md:text-xl font-bold px-3 py-1 rounded-full"
+                      style={{ 
+                        color: thumbnail.accentColor,
+                        backgroundColor: thumbnail.textColor + '20',
+                        textShadow: '1px 1px 2px rgba(0,0,0,0.6)'
+                      }}
                     >
                       {thumbnail.subtitle}
                     </p>
                   )}
                 </div>
+                
+                {/* 유튜브 스타일 재생 버튼 */}
+                <div className="absolute bottom-4 right-4 w-12 h-8 bg-red-600 rounded flex items-center justify-center">
+                  <div className="w-0 h-0 border-l-[8px] border-l-white border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-1"></div>
+                </div>
+                
+                {/* 조회수 표시 */}
+                <div className="absolute bottom-4 left-4 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded">
+                  조회수 1.2만회
+                </div>
+                
                 {selectedThumbnail === thumbnail.id && (
-                  <div className="absolute inset-0 bg-primary/20 border-2 border-primary rounded-lg" />
+                  <div className="absolute inset-0 bg-primary/20 border-4 border-primary rounded-lg flex items-center justify-center">
+                    <div className="bg-primary text-white px-4 py-2 rounded-full font-bold">
+                      선택됨 ✓
+                    </div>
+                  </div>
                 )}
               </div>
 
