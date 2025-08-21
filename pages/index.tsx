@@ -128,9 +128,13 @@ export default function Home() {
                 AI가 만드는 완벽한 썸네일
               </p>
               
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-300 mb-4">
                 영상 제목과 키워드만 입력하면 <br />
                 <span className="text-primary font-semibold">3-5개의 썸네일</span>을 자동으로 생성해드립니다
+              </p>
+              
+              <p className="text-sm text-gray-400 mb-8">
+                * 생성된 문구를 참고하여 썸네일을 제작하시면 됩니다.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
