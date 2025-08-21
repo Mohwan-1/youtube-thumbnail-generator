@@ -43,15 +43,27 @@ export default function ThumbnailGenerator({ apiKey }: ThumbnailGeneratorProps) 
         }),
       })
 
+      const data = await response.json()
+
       if (!response.ok) {
-        throw new Error('썸네일 생성에 실패했습니다.')
+        console.error('API Error:', data)
+        throw new Error(data.details || data.error || '썸네일 생성에 실패했습니다.')
       }
 
-      const data = await response.json()
+      if (!data.thumbnails || !Array.isArray(data.thumbnails)) {
+        throw new Error('잘못된 응답 형식입니다.')
+      }
+
       setThumbnails(data.thumbnails)
     } catch (error) {
       console.error('Error:', error)
-      alert('썸네일 생성 중 오류가 발생했습니다.')
+      const errorMessage = error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.'
+      
+      if (errorMessage.includes('API') || errorMessage.includes('key')) {
+        alert('API 키를 확인해주세요. Google Gemini API 키가 올바르지 않거나 만료되었을 수 있습니다.')
+      } else {
+        alert(`썸네일 생성 중 오류가 발생했습니다: ${errorMessage}`)
+      }
     } finally {
       setLoading(false)
     }
