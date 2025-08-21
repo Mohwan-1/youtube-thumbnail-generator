@@ -16,22 +16,31 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>썸네일 자동 생성기 - AI로 만드는 유튜브 썸네일</title>
-        <meta name="description" content="유튜브 영상 제목과 키워드만 입력하면 AI가 자동으로 3-5개의 썸네일을 생성해드립니다. 무료로 PNG 다운로드 가능!" />
-        <meta name="keywords" content="유튜브, 썸네일, 자동생성, AI, 썸네일메이커, 유튜브썸네일" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=no" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta httpEquiv="imagetoolbar" content="no" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=Edge" />
+        <meta name="Robots" content="index,follow" />
+        
+        <title>유튜브 썸네일 자동생성기</title>
+        <meta name="description" content="유튜브 썸네일 자동생성기" />
+        <meta name="keywords" content="시돈띵의 유튜브 도구모음" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="썸네일 자동 생성기 - AI로 만드는 유튜브 썸네일" />
-        <meta property="og:description" content="유튜브 영상 제목과 키워드만 입력하면 AI가 자동으로 3-5개의 썸네일을 생성해드립니다." />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/logo.png" />
+        <meta property="og:title" content="유튜브 썸네일 자동생성기" />
+        <meta property="og:description" content="시돈띵의 유튜브 도구모음" />
+        <meta property="og:site_name" content="유튜버를 위한 도구 모음 사이트" />
+        <meta property="og:image" content="/opengr_logo.png" />
+        <meta property="og:url" content="https://sdi0.mohwan.com/" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="썸네일 자동 생성기" />
-        <meta name="twitter:description" content="AI로 만드는 유튜브 썸네일" />
-        <meta name="twitter:image" content="/logo.png" />
+        <meta name="twitter:title" content="유튜브 썸네일 자동생성기" />
+        <meta name="twitter:description" content="시돈띵의 유튜브 도구모음" />
+        <meta name="twitter:image" content="/opengr_logo.png" />
       </Head>
 
       <div className="min-h-screen bg-dark">
