@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Key, ExternalLink, Youtube, Sparkles } from 'lucide-react'
 import ThumbnailGenerator from '@/components/ThumbnailGenerator'
 import AdBanner from '@/components/AdBanner'
+import AdSenseInit from '@/components/AdSenseInit'
 
 export default function Home() {
   const [apiKey, setApiKey] = useState('AIzaSyDBe0JCBmlce0jVlhyXpp08pXiLbW9G7bw')
@@ -15,6 +16,7 @@ export default function Home() {
 
   return (
     <>
+      <AdSenseInit />
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=no" />
@@ -48,7 +50,7 @@ export default function Home() {
         <div className="fixed left-0 top-0 h-full w-32 hidden xl:block">
           <div className="sticky top-20">
             <AdBanner
-              slot="auto"
+              type="auto"
               className="h-96"
               style={{ width: '120px' }}
             />
@@ -59,7 +61,7 @@ export default function Home() {
         <div className="fixed right-0 top-0 h-full w-32 hidden xl:block">
           <div className="sticky top-20">
             <AdBanner
-              slot="auto"
+              type="auto"
               className="h-96"
               style={{ width: '120px' }}
             />
@@ -97,6 +99,15 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Top Ad Banner */}
+            <div className="container mx-auto px-4 pb-4">
+              <AdBanner
+                slot="5964488484"
+                format="fluid"
+                layout="in-article"
+                className="max-w-full"
+              />
+            </div>
           </header>
 
           {/* Hero Section */}
@@ -178,12 +189,30 @@ export default function Home() {
             </div>
           </section>
 
+          {/* Middle Ad Banner */}
+          <section className="container mx-auto px-4 mb-8">
+            <AdBanner
+              slot="5964488484"
+              format="fluid"
+              layout="in-article"
+              className="max-w-full"
+            />
+          </section>
 
           {/* Thumbnail Generator */}
           <section className="container mx-auto px-4 mb-12">
             <ThumbnailGenerator apiKey={apiKey} />
           </section>
 
+          {/* Bottom Ad Banner */}
+          <section className="container mx-auto px-4 mb-8">
+            <AdBanner
+              slot="5964488484"
+              format="fluid"
+              layout="in-article"
+              className="max-w-full"
+            />
+          </section>
 
           {/* Footer */}
           <footer className="border-t border-gray-700">
