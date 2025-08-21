@@ -5,13 +5,15 @@ import { Key, ExternalLink, Youtube, Sparkles } from 'lucide-react'
 import ThumbnailGenerator from '@/components/ThumbnailGenerator'
 import AdBanner from '@/components/AdBanner'
 import AdSenseInit from '@/components/AdSenseInit'
+import ApiGuideModal from '@/components/ApiGuideModal'
 
 export default function Home() {
   const [apiKey, setApiKey] = useState('AIzaSyDBe0JCBmlce0jVlhyXpp08pXiLbW9G7bw')
   const [showApiInput, setShowApiInput] = useState(false)
+  const [showApiGuide, setShowApiGuide] = useState(false)
 
   const openApiGuide = () => {
-    window.open('https://console.cloud.google.com/apis/credentials', '_blank')
+    setShowApiGuide(true)
   }
 
   return (
@@ -243,6 +245,12 @@ export default function Home() {
             </div>
           </footer>
         </div>
+
+        {/* API Guide Modal */}
+        <ApiGuideModal
+          isOpen={showApiGuide}
+          onClose={() => setShowApiGuide(false)}
+        />
       </div>
     </>
   )
