@@ -1,5 +1,11 @@
 import { useEffect } from 'react'
 
+declare global {
+  interface Window {
+    adsbygoogle: any[]
+  }
+}
+
 interface AdBannerProps {
   slot?: string
   format?: string
@@ -20,8 +26,7 @@ export default function AdBanner({
   useEffect(() => {
     try {
       // AdSense 스크립트가 로드되었는지 확인
-      if (typeof window !== 'undefined' && window.adsbygoogle) {
-        // @ts-ignore
+      if (typeof window !== 'undefined') {
         (window.adsbygoogle = window.adsbygoogle || []).push({})
       }
     } catch (err) {
