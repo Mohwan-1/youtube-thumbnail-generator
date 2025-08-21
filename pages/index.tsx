@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { Key, ExternalLink, Youtube, Sparkles } from 'lucide-react'
@@ -8,9 +8,30 @@ import AdSenseInit from '@/components/AdSenseInit'
 import ApiGuideModal from '@/components/ApiGuideModal'
 
 export default function Home() {
-  const [apiKey, setApiKey] = useState('AIzaSyDBe0JCBmlce0jVlhyXpp08pXiLbW9G7bw')
-  const [showApiInput, setShowApiInput] = useState(false)
+  const [apiKey, setApiKey] = useState('')
+  const [showApiInput, setShowApiInput] = useState(true)
   const [showApiGuide, setShowApiGuide] = useState(false)
+
+  // 로컬 스토리지에서 API 키 불러오기
+  useEffect(() => {
+    const savedApiKey = localStorage.getItem('gemini_api_key')
+    if (savedApiKey) {
+      setApiKey(savedApiKey)
+      setShowApiInput(false)
+    }
+  }, [])
+
+  // API 키 저장
+  const saveApiKey = (key: string) => {
+    setApiKey(key)
+    if (key.trim()) {
+      localStorage.setItem('gemini_api_key', key)
+      setShowApiInput(false)
+    } else {
+      localStorage.removeItem('gemini_api_key')
+      setShowApiInput(true)
+    }
+  }
 
   const openApiGuide = () => {
     setShowApiGuide(true)
@@ -182,6 +203,25 @@ export default function Home() {
                       placeholder="Google Gemini API 키를 입력하세요"
                       className="input-field w-full"
                     />
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => saveApiKey(apiKey)}
+                        className="btn-primary flex-1"
+                        disabled={!apiKey.trim()}
+                      >
+                        API 키 저장
+                      </button>
+                      <button
+                        onClick={() => {
+                          setApiKey('')
+                          localStorage.removeItem('gemini_api_key')
+                          setShowApiInput(true)
+                        }}
+                        className="btn-secondary"
+                      >
+                        초기화
+                      </button>
+                    </div>
                     <p className="text-sm text-gray-400">
                       API 키가 없으신가요? 
                       <button
@@ -193,7 +233,19 @@ export default function Home() {
                     </p>
                   </div>
                 ) : (
-                  <p className="text-gray-400">API 키가 설정되었습니다 ✓</p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-gray-400">API 키가 설정되었습니다 ✓</p>
+                    <button
+                      onClick={() => {
+                        setApiKey('')
+                        localStorage.removeItem('gemini_api_key')
+                        setShowApiInput(true)
+                      }}
+                      className="text-red-400 hover:text-red-300 text-sm"
+                    >
+                      삭제
+                    </button>
+                  </div>
                 )}
               </div>
             </div>
