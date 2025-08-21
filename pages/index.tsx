@@ -88,15 +88,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Top Ad Banner */}
-            <div className="container mx-auto px-4 pb-4">
-              <AdBanner
-                slot="5964488484"
-                format="fluid"
-                layout="in-article"
-                className="max-w-full"
-              />
-            </div>
           </header>
 
           {/* Hero Section */}
@@ -178,30 +169,12 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Middle Ad Banner */}
-          <section className="container mx-auto px-4 mb-8">
-            <AdBanner
-              slot="5964488484"
-              format="fluid"
-              layout="in-article"
-              className="max-w-full"
-            />
-          </section>
 
           {/* Thumbnail Generator */}
           <section className="container mx-auto px-4 mb-12">
             <ThumbnailGenerator apiKey={apiKey} />
           </section>
 
-          {/* Bottom Ad Banner */}
-          <section className="container mx-auto px-4 mb-8">
-            <AdBanner
-              slot="5964488484"
-              format="fluid"
-              layout="in-article"
-              className="max-w-full"
-            />
-          </section>
 
           {/* Footer */}
           <footer className="border-t border-gray-700">
