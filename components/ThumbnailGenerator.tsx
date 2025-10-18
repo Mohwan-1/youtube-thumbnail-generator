@@ -125,9 +125,18 @@ export default function ThumbnailGenerator({ apiKey }: ThumbnailGeneratorProps) 
             disabled={loading}
             className="btn-primary w-full flex items-center justify-center gap-2"
           >
-            <Wand2 size={20} />
-            {loading ? '생성 중...' : '썸네일 생성하기'}
+            <Wand2 size={20} className={loading ? 'animate-spin' : ''} />
+            {loading ? 'AI로 썸네일 생성 중...' : '썸네일 생성하기'}
           </button>
+
+          {loading && (
+            <div className="mt-4 p-4 bg-blue-900/30 rounded-lg">
+              <p className="text-blue-300 text-sm text-center">
+                💡 <strong>잠시만 기다려주세요!</strong><br/>
+                AI가 화려한 배경 디자인과 썸네일 문구를 생성하고 있습니다.
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -140,23 +149,25 @@ export default function ThumbnailGenerator({ apiKey }: ThumbnailGeneratorProps) 
                   thumbnailRefs.current[thumbnail.id] = el
                 }}
                 className="relative aspect-video rounded-lg overflow-hidden mb-4 cursor-pointer transition-transform hover:scale-105"
-                style={{ 
-                  background: thumbnail.background.includes('gradient') 
-                    ? thumbnail.background 
-                    : thumbnail.background,
-                  boxShadow: selectedThumbnail === thumbnail.id 
-                    ? '0 0 20px rgba(255, 107, 107, 0.5)' 
+                style={{
+                  background: thumbnail.background,
+                  boxShadow: selectedThumbnail === thumbnail.id
+                    ? '0 0 20px rgba(255, 107, 107, 0.5)'
                     : '0 4px 12px rgba(0, 0, 0, 0.3)'
                 }}
                 onClick={() => setSelectedThumbnail(thumbnail.id)}
               >
-                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center">
+                {/* Dark overlay for better text readability */}
+                <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+
+                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center z-10">
                   <h3
                     className="text-2xl md:text-4xl font-black mb-2 leading-tight"
-                    style={{ 
+                    style={{
                       color: thumbnail.textColor,
-                      textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
-                      fontFamily: 'system-ui, -apple-system, sans-serif'
+                      textShadow: '3px 3px 8px rgba(0,0,0,0.9), -1px -1px 4px rgba(0,0,0,0.7)',
+                      fontFamily: 'system-ui, -apple-system, sans-serif',
+                      WebkitTextStroke: '1px rgba(0,0,0,0.5)'
                     }}
                   >
                     {thumbnail.title}
@@ -164,10 +175,11 @@ export default function ThumbnailGenerator({ apiKey }: ThumbnailGeneratorProps) 
                   {thumbnail.subtitle && (
                     <p
                       className="text-sm md:text-xl font-bold px-3 py-1 rounded-full"
-                      style={{ 
+                      style={{
                         color: thumbnail.accentColor,
-                        backgroundColor: thumbnail.textColor + '20',
-                        textShadow: '1px 1px 2px rgba(0,0,0,0.6)'
+                        backgroundColor: 'rgba(0,0,0,0.7)',
+                        textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
+                        border: `2px solid ${thumbnail.accentColor}`
                       }}
                     >
                       {thumbnail.subtitle}
@@ -176,17 +188,17 @@ export default function ThumbnailGenerator({ apiKey }: ThumbnailGeneratorProps) 
                 </div>
                 
                 {/* 유튜브 스타일 재생 버튼 */}
-                <div className="absolute bottom-4 right-4 w-12 h-8 bg-red-600 rounded flex items-center justify-center">
+                <div className="absolute bottom-4 right-4 w-12 h-8 bg-red-600 rounded flex items-center justify-center z-20">
                   <div className="w-0 h-0 border-l-[8px] border-l-white border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-1"></div>
                 </div>
-                
+
                 {/* 조회수 표시 */}
-                <div className="absolute bottom-4 left-4 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded">
+                <div className="absolute bottom-4 left-4 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded z-20">
                   조회수 1.2만회
                 </div>
                 
                 {selectedThumbnail === thumbnail.id && (
-                  <div className="absolute inset-0 bg-primary/20 border-4 border-primary rounded-lg flex items-center justify-center">
+                  <div className="absolute inset-0 bg-primary/20 border-4 border-primary rounded-lg flex items-center justify-center z-30">
                     <div className="bg-primary text-white px-4 py-2 rounded-full font-bold">
                       선택됨 ✓
                     </div>
